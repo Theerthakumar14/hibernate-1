@@ -7,6 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
+
+//@Getter
+//@Setter
 @Entity
 @Table(name="sewing_machine")
 
@@ -25,7 +30,7 @@ public class SewingMachineDTO {
 	@Column(name="MODEL")
 	 private String model;
 	
-	@Column(name="SIZE")
+	@Column(name="size")
 	 private int size;
 	
 	@Column(name="PRICE")

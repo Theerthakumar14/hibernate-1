@@ -6,6 +6,10 @@ public interface SewingMachineService {
 	
 	public boolean validateSewingMachineDetails(SewingMachineDTO sewingmachinedto);
 	
-	public void validateSewingMAchineById();
+	public void validateSewingMachineById();
+	
+	public void validatetheSewingMachineByUpdating();
+	
+	public void validateTheSewingMachineDetailsByDelete();
 
 }

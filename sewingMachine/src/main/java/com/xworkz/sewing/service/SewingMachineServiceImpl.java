@@ -39,9 +39,22 @@ public class SewingMachineServiceImpl implements SewingMachineService{
 	}
 
 	@Override
-	public void validateSewingMAchineById() {
+	public void validateSewingMachineById() {
 		sewingMachinedao.getSewingMachineDetails();
 		System.out.println("get the details from database");
+	}
+
+	
+
+	@Override
+	public void validatetheSewingMachineByUpdating() {
+		sewingMachinedao.updateSewingMachineNameandPrice();
+		
+	}
+
+	@Override
+	public void validateTheSewingMachineDetailsByDelete() {
+		sewingMachinedao.deleteSewingMachineDetails();
 	}
 
 }

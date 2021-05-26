@@ -9,11 +9,12 @@ public class Mainapp {
 
 
 
-		DominozDTO dominozDTO = new DominozDTO("Margherita ", "HSR Layout", true, "Nonveg", "Medium", 350);
+		DominozDTO dominozDTO = new DominozDTO("Tamoto ", "koramangala", true, "veg", "Medium", 120);
 		DominozServiceImpl dominozServiceImpl = new DominozServiceImpl();
 		dominozServiceImpl.validatePizzaDetails(dominozDTO);
 		dominozServiceImpl.validatePizzaDetailsById();
-		
+		dominozServiceImpl.updateThePizzaDetails();
+		dominozServiceImpl.deleteThePizzadetails();
 }
 
 }

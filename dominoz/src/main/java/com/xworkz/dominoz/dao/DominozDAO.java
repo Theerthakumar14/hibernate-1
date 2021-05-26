@@ -7,5 +7,9 @@ public interface DominozDAO {
 	public void save(DominozDTO dominozdto);
 	
 	public void getPizza();
+	
+	public void updatePizza();
+	
+	public void deletePizzaId();
 
 }

@@ -7,5 +7,9 @@ public interface SewingMachineDAO {
 	public void save(SewingMachineDTO sewingmachinedto);
 	
 	public void getSewingMachineDetails();
+	
+	public void updateSewingMachineNameandPrice();
+	
+	public void deleteSewingMachineDetails();
 
 }

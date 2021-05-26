@@ -2,18 +2,19 @@ package com.xworkz.sewing.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+import org.hibernate.Transaction;
 
 import com.xworkz.sewing.dto.SewingMachineDTO;
+import com.xworkz.singlefactory.SingleFactory;
 
 public class SewingMachineDAOImpl implements SewingMachineDAO {
 
 	@Override
 	public void save(SewingMachineDTO sewingmachinedto) {
-		SessionFactory sessionFactory = null;
+		System.out.println("inside save method");
 		Session session = null;
 		try {
-			sessionFactory = new Configuration().configure("sewingmachine.cfg.xml").buildSessionFactory();
+			SessionFactory sessionFactory = SingleFactory.getSessionFactory();
 			session = sessionFactory.openSession();
 			session.beginTransaction();
 			session.save(sewingmachinedto);
@@ -30,27 +31,18 @@ public class SewingMachineDAOImpl implements SewingMachineDAO {
 				System.out.println("session is not closed");
 			}
 
-			if (sessionFactory != null) {
-				sessionFactory.close();
-				System.out.println("session factory is closed");
-			} else {
-				System.out.println("session factory is not closed");
-
-			}
-
 		}
 	}
 
 	@Override
 	public void getSewingMachineDetails() {
-		SessionFactory sessionFactory = null;
+		System.out.println("Inside get method");
 		Session session = null;
 		try {
-			sessionFactory = new Configuration().configure("sewingmachine.cfg.xml").buildSessionFactory();
+			SessionFactory sessionFactory = SingleFactory.getSessionFactory();
 			session = sessionFactory.openSession();
 			SewingMachineDTO SewingMachineDTO = session.get(SewingMachineDTO.class, 2);
 			System.out.println(SewingMachineDTO);
-			// System.out.println(dominozDTO);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -58,14 +50,74 @@ public class SewingMachineDAOImpl implements SewingMachineDAO {
 				session.close();
 				System.out.println("session is closed");
 			} else {
+				System.out.println("session is not closed");
+			}
 
-			}
-			if (sessionFactory != null) {
-				sessionFactory.close();
-				System.out.println("sessionFactory is closed");
+		}
+
+	}
+
+	@Override
+	public void updateSewingMachineNameandPrice() {
+		System.out.println("Inside update method");
+		Session session = null;
+		// Transaction transaction = null;
+
+		try {
+			SessionFactory sessionFactory = SingleFactory.getSessionFactory();
+			
+			session = sessionFactory.openSession();
+			System.out.println("session -------------------------------");
+			SewingMachineDTO machineDTO = session.get(SewingMachineDTO.class, 1);
+			
+			machineDTO.setSewingId(machineDTO.getSewingId());
+			machineDTO.setName("Elei");
+			machineDTO.setPrice(100.0);
+			session.beginTransaction();
+			session.update(machineDTO);
+			session.getTransaction().commit();
+			System.out.println("updated successfully");
+
+		} catch (Exception e) {
+			// transaction.rollback();
+			e.printStackTrace();
+		} finally {
+			if (session != null) {
+				session.close();
+				System.out.println("session is closed");
 			} else {
-				System.out.println("sessionFactory is not closed");
+				System.out.println("session is not closed");
 			}
+
+		}
+
+	}
+
+	@Override
+	public void deleteSewingMachineDetails() {
+		System.out.println("Inside delete method");
+		Session session = null;
+		Transaction transaction = null;
+		try {
+			SessionFactory sessionFactory = SingleFactory.getSessionFactory();
+			session = sessionFactory.openSession();
+			SewingMachineDTO machineDTO = session.get(SewingMachineDTO.class, 3);
+			transaction = session.beginTransaction();
+			session.remove(machineDTO);
+			transaction.commit();
+			System.out.println("Delete is done");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			transaction.rollback();
+		} finally {
+			if (session != null) {
+				session.close();
+				System.out.println("session is closed");
+			} else {
+				System.out.println("session is not closed");
+			}
+			SingleFactory.closeFactory();
 
 		}
 

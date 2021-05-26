@@ -46,4 +46,17 @@ public class DominozServiceImpl implements DominozService {
 	public void validatePizzaDetailsById() {
 		dominoz.getPizza();
 	}
+
+	@Override
+	public void updateThePizzaDetails() {
+		dominoz.updatePizza();
+		//System.out.println("updated the pizza details");
+		
+	}
+
+	@Override
+	public void deleteThePizzadetails() {
+		dominoz.deletePizzaId();
+		//System.out.println("Deleted Successfully");
+	}
 }
