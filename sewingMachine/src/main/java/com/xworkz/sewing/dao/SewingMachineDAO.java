@@ -11,5 +11,9 @@ public interface SewingMachineDAO {
 	public void updateSewingMachineNameandPrice();
 	
 	public void deleteSewingMachineDetails();
+	
+	public void getallSewingMachineRecords();
+	
+	public void getSewingMachineColourById();
 
 }

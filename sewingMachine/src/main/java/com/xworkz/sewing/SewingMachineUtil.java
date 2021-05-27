@@ -19,7 +19,10 @@ public class SewingMachineUtil {
 		
 		SewingMachineDAO dao = new SewingMachineDAOImpl();
 		//dao.updateSewingMachineNameandPrice();
-		dao.deleteSewingMachineDetails();
-		}
+		//dao.deleteSewingMachineDetails();
+		//dao.getallSewingMachineRecords();
+		//dao.getSewingMachineDetails();
+		dao.getSewingMachineColourById();
+	}
 
 }

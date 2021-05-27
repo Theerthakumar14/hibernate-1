@@ -134,6 +134,9 @@ public class SewingMachineDTO {
 		return "SewingMachineDTO [sewingId=" + sewingId + ", colour=" + colour + ", name=" + name + ", model=" + model
 				+ ", size=" + size + ", price=" + price + ", isWorking=" + isWorking + "]";
 	}
+
+
+	
 	
 	
 	 

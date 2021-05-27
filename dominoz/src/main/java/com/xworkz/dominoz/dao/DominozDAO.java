@@ -11,5 +11,9 @@ public interface DominozDAO {
 	public void updatePizza();
 	
 	public void deletePizzaId();
+	
+	public void getAllPizzaRecords();
+	
+	public void getPizzaNameById();
 
 }
