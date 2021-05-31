@@ -15,5 +15,12 @@ public interface DominozDAO {
 	public void getAllPizzaRecords();
 	
 	public void getPizzaNameById();
+	
+	public void loadPizzaPriceByName(String pizzaName);
+	
+	public void loadFirstResultAndMaxResult();
+	
+	public void getMaxPizzaPrice();
 
+	public void getMinPizzaPrice();
 }

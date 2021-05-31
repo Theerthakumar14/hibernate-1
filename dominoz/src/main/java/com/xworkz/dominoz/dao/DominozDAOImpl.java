@@ -147,20 +147,14 @@ public class DominozDAOImpl implements DominozDAO {
 		try {
 			SessionFactory sessionFactory = SingleFactory.getSessionFactory();
 			session = sessionFactory.openSession();
-			String hql = "from com.xworkz.dominoz.dto.DominozDTO";
-
-			@SuppressWarnings("unchecked")
-			Query<DominozDTO> query = session.createQuery(hql);
+			Query<DominozDTO> query = session.createNamedQuery("getAllPizzaRecords");
 			List<DominozDTO> list = query.list();
 			System.out.println(list);
-
 			for (DominozDTO dominozdto : list) {
 				System.out.println(dominozdto);
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
-
 		} finally {
 			if (session != null) {
 				session.close();
@@ -181,10 +175,34 @@ public class DominozDAOImpl implements DominozDAO {
 		try {
 			SessionFactory sessionFactory = SingleFactory.getSessionFactory();
 			session = sessionFactory.openSession();
-			String hql = "select name from DominozDTO where pizzaId = 4 ";
+			Query<DominozDTO> query = session.createQuery("Invoked pizza name by location");
+			List<DominozDTO> list = query.list();
+			System.out.println(list);
+		} catch (Exception e) {
+			e.printStackTrace();
 
-			@SuppressWarnings("unchecked")
-			Query<DominozDTO> query = session.createQuery(hql);
+		} finally {
+			if (session != null) {
+				session.close();
+				System.out.println("session is closed");
+			} else {
+				System.out.println("session is not closed");
+			}
+			SingleFactory.closeFactory();
+
+		}
+
+	}
+
+	@Override
+	public void loadPizzaPriceByName(String pizzaName) {
+		System.out.println("Invoked loadPizzaPriceByName");
+		Session session = null;
+		try {
+			SessionFactory sessionFactory = SingleFactory.getSessionFactory();
+			session = sessionFactory.openSession();
+			Query query = session.createNamedQuery("getPizzaNameByPrice");
+			query.setParameter("pizzaname", pizzaName);
 			List<DominozDTO> list = query.list();
 			System.out.println(list);
 
@@ -199,6 +217,88 @@ public class DominozDAOImpl implements DominozDAO {
 				System.out.println("session is not closed");
 			}
 			SingleFactory.closeFactory();
+
+		}
+
+	}
+
+	@Override
+	public void loadFirstResultAndMaxResult() {
+		System.out.println("invoke loadFirstResultAndMaxResult");
+		Session session = null;
+		try {
+			SessionFactory sessionFactory = SingleFactory.getSessionFactory();
+			session = sessionFactory.openSession();
+			Query query = session.createNamedQuery("loadFirstresultAndMaxResult");
+			query.setFirstResult(0);
+			query.setMaxResults(3);
+			List<DominozDTO> list = query.list();
+			System.out.println(list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null) {
+				session.close();
+				System.out.println("session is closed");
+			} else {
+				System.out.println("session is not closed");
+			}
+			SingleFactory.closeFactory();
+
+		}
+
+	}
+
+	@Override
+	public void getMaxPizzaPrice() {
+		System.out.println("invoked maximum pizza price");
+		Session session = null;
+		try {
+			SessionFactory sessionFactory = SingleFactory.getSessionFactory();
+			session = sessionFactory.openSession();
+			// String hql = "select max(price) from DominozDTO";
+			Query query = session.createNamedQuery("invoked maxPizzaPrice");
+			List<DominozDTO> list = query.list();
+			System.out.println(list);
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		} finally {
+			if (session != null) {
+				session.close();
+				System.out.println("session is closed");
+			} else {
+				System.out.println("session is not closed");
+			}
+			SingleFactory.closeFactory();
+
+		}
+
+	}
+
+	@Override
+	public void getMinPizzaPrice() {
+		System.out.println("invke minimum pizza price");
+		Session session = null;
+		try {
+			SessionFactory sessionFactory = SingleFactory.getSessionFactory();
+			session = sessionFactory.openSession();
+			Query query = session.createNamedQuery("invoke minPizzaPrice");
+			List<DominozDTO> list = query.list();
+			System.out.println(list);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		} finally {
+			if (session != null) {
+				session.close();
+				System.out.println("session is closed");
+			} else {
+				System.out.println("session is not closed");
+			}
+			SingleFactory.closeFactory();
+
 
 		}
 

@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 
@@ -12,6 +14,16 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="pizza")
+@NamedQueries({
+	
+
+@NamedQuery(name="getPizzaNameByPrice", query="select p.price from DominozDTO AS p where p.name =:pizzaname"),
+@NamedQuery(name="loadFirstresultAndMaxResult", query="from DominozDTO"),
+@NamedQuery(name="Invoked pizza name by location", query="select name from DominozDTO where pizzaId = 4 "),
+@NamedQuery(name="getAllPizzaRecords",query="from DominozDTO "),
+@NamedQuery(name="invoked maxPizzaPrice", query="Select max(price) from DominozDTO"),
+@NamedQuery(name="invoke minPizzaPrice", query="select min(price) from DominozDTO")})
+
 public class DominozDTO {
 	public DominozDTO() {
 		super();

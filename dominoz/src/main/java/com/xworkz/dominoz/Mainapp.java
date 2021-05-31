@@ -9,18 +9,20 @@ public class Mainapp {
 
 	public static void main(String[] args) {
 
-
-
 		DominozDTO dominozDTO = new DominozDTO("Tamoto ", "koramangala", true, "veg", "Medium", 120);
-	//	DominozServiceImpl dominozServiceImpl = new DominozServiceImpl();
-//		dominozServiceImpl.validatePizzaDetails(dominozDTO);
-//		dominozServiceImpl.validatePizzaDetailsById();
-//		dominozServiceImpl.updateThePizzaDetails();
-//		dominozServiceImpl.deleteThePizzadetails();
-		
+		// DominozServiceImpl dominozServiceImpl = new DominozServiceImpl();
+		// dominozServiceImpl.validatePizzaDetails(dominozDTO);
+		// dominozServiceImpl.validatePizzaDetailsById();
+		// dominozServiceImpl.updateThePizzaDetails();
+		// dominozServiceImpl.deleteThePizzadetails();
+
 		DominozDAO dominozdao = new DominozDAOImpl();
-		//dominozdao.getAllPizzaRecords();
-		dominozdao.getPizzaNameById();
-}
+		// dominozdao.getAllPizzaRecords();
+		// dominozdao.getPizzaNameById();
+		// dominozdao.loadPizzaPriceByName("Capsicum");
+		// dominozdao.loadFirstResultAndMaxResult();
+		// dominozdao.getMaxPizzaPrice();
+		dominozdao.getMinPizzaPrice();
+	}
 
 }
