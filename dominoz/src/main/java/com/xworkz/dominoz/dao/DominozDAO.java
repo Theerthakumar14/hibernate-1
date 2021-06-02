@@ -23,4 +23,6 @@ public interface DominozDAO {
 	public void getMaxPizzaPrice();
 
 	public void getMinPizzaPrice();
+	
+	
 }
